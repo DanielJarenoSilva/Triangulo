@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:25:10 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/02/25 13:25:34 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/04 10:44:58 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,4 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
+
