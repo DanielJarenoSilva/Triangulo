@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/04 12:27:45 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/06 13:19:48 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,22 @@ typedef struct t_raycast
 	mlx_image_t*	img;
 }				t_raycast;
 
+typedef struct t_game
+{
+	mlx_t		*mlx;
+	t_player	player;
+	t_map		map;
+	t_raycast	ray;
+}			t_game;
 
 int		ft_strcmp(char *s1, char *s2);
+void	*ft_memset(void *s, int c, size_t n);
 void	print_errors_1(int error);
 void	check_errors_1(char *filename);
 void	find_player(t_player *player, t_map *map);
 void	cube(t_map *map);
+void	move_x(t_player *p, t_map *map, double speed);
+void	raycast(t_player *player, t_map *map, t_raycast *ray);
+void	move_y(t_player *p, t_map *map, double speed);
 
 #endif
