@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 12:55:49 by djareno           #+#    #+#             */
-/*   Updated: 2026/03/06 13:19:39 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/07 17:36:15 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ void	update(void *param)
 		move_x(&g->player, &g->map, 0.05);
 	if (mlx_is_key_down(g->mlx, MLX_KEY_A))
 		move_x(&g->player, &g->map, -0.05);
+	if (mlx_is_key_down(g->mlx, MLX_KEY_RIGHT))
+		rotate(&g->player, -0.05);
+	if (mlx_is_key_down(g->mlx, MLX_KEY_LEFT))
+		rotate(&g->player, -0.05);
 	raycast(&g->player, &g->map, &g->ray);
 }
 

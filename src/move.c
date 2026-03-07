@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 10:49:38 by djareno           #+#    #+#             */
-/*   Updated: 2026/03/06 13:21:10 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/07 17:31:35 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,17 @@ void	move_x(t_player *p, t_map *map, double speed)
 	{
 		p->pos_x -= p->dir_y * speed;
 	}
+}
+
+void	rotate(t_player *p, double speed)
+{
+	double	old_dir;
+	double	old_plane_x;
+
+	old_dir = p->dir_x;
+	p->dir_x = p->dir_x * cos(-speed) - p->dir_y * sin(-speed);
+	p->dir_y = old_dir * sin(-speed) + p->dir_y * cos(-speed);
+	old_plane_x = p->plane_x;
+	p->plane_x = p->plane_x * cos(-speed) - p->plane_y * sin(-speed);
+	p->plane_y = old_plane_x * sin(-speed) + p->plane_y * cos(-speed);
 }

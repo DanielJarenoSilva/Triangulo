@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/06 12:34:53 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/07 17:13:43 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 char	**create_map(void)
 {
 	char	**map;
-	int		x;
 
-	x = 0;
 	map = malloc(6 * sizeof(char *));
 	map[0] = ft_strdup("11111");
 	map[1] = ft_strdup("10001");

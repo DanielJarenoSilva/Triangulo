@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/06 13:19:48 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/07 17:28:52 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	cube(t_map *map);
 void	move_x(t_player *p, t_map *map, double speed);
 void	raycast(t_player *player, t_map *map, t_raycast *ray);
 void	move_y(t_player *p, t_map *map, double speed);
+void	rotate(t_player *p, double speed);
 
 #endif
