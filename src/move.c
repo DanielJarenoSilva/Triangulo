@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42.fr>            +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 10:49:38 by djareno           #+#    #+#             */
-/*   Updated: 2026/03/07 17:31:35 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/09 11:19:53 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ void	move_x(t_player *p, t_map *map, double speed)
 void	rotate(t_player *p, double speed)
 {
 	double	old_dir;
-	double	old_plane_x;
+	double	len;
 
 	old_dir = p->dir_x;
-	p->dir_x = p->dir_x * cos(-speed) - p->dir_y * sin(-speed);
-	p->dir_y = old_dir * sin(-speed) + p->dir_y * cos(-speed);
-	old_plane_x = p->plane_x;
-	p->plane_x = p->plane_x * cos(-speed) - p->plane_y * sin(-speed);
-	p->plane_y = old_plane_x * sin(-speed) + p->plane_y * cos(-speed);
+	p->dir_x = p->dir_x * cos(speed) - p->dir_y * sin(speed);
+	p->dir_y = old_dir * sin(speed) + p->dir_y * cos(speed);
+	len = sqrt(p->dir_x * p->dir_x + p->dir_y * p->dir_y);
+	p->dir_x /= len;
+	p->dir_y /= len;
+	p->plane_x = -p->dir_y * 0.66;
+	p->plane_y = p->dir_x * 0.66;
 }

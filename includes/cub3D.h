@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42.fr>            +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/07 17:28:52 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/09 10:48:08 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct t_player
 {
 	double		pos_x;
 	double		pos_y;
-	int			dir_x;
-	int			dir_y;
+	double		dir_x;
+	double		dir_y;
 	double		plane_x;
 	double		plane_y;
 }				t_player;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42.fr>            +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/07 17:13:43 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/09 10:51:41 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**create_map(void)
 
 int	main(void)
 {
-	t_map map;
+	t_map	map;
 
 	map.map = create_map();
 	map.height = 6;
