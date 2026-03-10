@@ -6,53 +6,59 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:56:28 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/09 20:27:07 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/10 13:28:32 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "cub3D.h"
+#include "get_next_line.h"
 
-int	has_cub_extension(char *filename)
+void save_colors
 {
-	size_t	len;
-
-	len = ft_strlen(filename);
-	if (len < 4)
-		return (0);
-	return (ft_strcmp(filename + len - 4, ".cub") == 0);
+	
+}
+	
+save_ids(char *line, char *word, t_global *global)
+{
+	save_paths(line, word, global);
+	else if (ft_strcmp(word, "F") == 0 || ft_strcmp(word, "C") == 0)
+		save_colors();
+	else
+		//dar error porque el id no es valido
 }
 
-void check_and_save_identifiers(char *line, int *map_flag)
+void	check_and_save_identifiers(char *line, int *map_flag, t_global *global)
 {
-	char *word;
-	
+	char	*word;
+
 	word = get_word(line, 1);
 	if (!word)
-		return;
+		return ;
 	else if (word[0] == '1' || word[0] == '0')
 	{
-		map_flag = 1;
+		*map_flag = 1;
 		free(word);
-		return;
+		return ;
 	}
-	// guardar los ids en una struct
+	save_ids(line, word, global);
 }
 
-int check_file(int fd, t_parse *parse)
+void	check_file(int fd, t_global *global)
 {
-	int map_flag;
-	char *line;
-	char *word;
+	int		map_flag;
+	char	*line;
 
 	map_flag = 0;
 	while (!map_flag)
 	{
 		line = get_next_line(fd, 0);
-		check_and_save_identifiers(line, &map_flag);
+		if (!line)
+			break ;
+		check_and_save_identifiers(line, &map_flag, global);
+		free(line);
 		if (map_flag == 1)
 		{
-			if (check_all_ids(&parse) == 0)
+			if (check_all_ids(global) == 0)
 			{
 				print_errors_1(4);
 				exit(1);
@@ -61,11 +67,12 @@ int check_file(int fd, t_parse *parse)
 	}
 }
 
-void	check_errors_1(char *filename, int fd, t_parse *parse)
+void	check_errors_1(char *filename, int fd, t_global *global)
 {
 	if (has_cub_extension(filename) == 0)
 	{
 		print_errors_1(3);
 		exit(1);
 	}
+	check_file(fd, global);
 }
