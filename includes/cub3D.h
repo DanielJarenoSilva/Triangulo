@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/09 10:48:08 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/10 11:32:11 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 
 # define HEIGHT 600
 # define WIDTH 800
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
+# define TEX_NORTH 0
+# define TEX_SOUTH 1
+# define TEX_EAST  2
+# define TEX_WEST  3
 
 typedef struct t_player
 {
@@ -55,6 +61,7 @@ typedef struct t_raycast
 	int				hit;
 	int				side;
 	mlx_image_t*	img;
+	mlx_texture_t	*wall_tex[4];
 }				t_raycast;
 
 typedef struct t_game
@@ -65,15 +72,32 @@ typedef struct t_game
 	t_raycast	ray;
 }			t_game;
 
-int		ft_strcmp(char *s1, char *s2);
-void	*ft_memset(void *s, int c, size_t n);
-void	print_errors_1(int error);
-void	check_errors_1(char *filename);
-void	find_player(t_player *player, t_map *map);
-void	cube(t_map *map);
-void	move_x(t_player *p, t_map *map, double speed);
-void	raycast(t_player *player, t_map *map, t_raycast *ray);
-void	move_y(t_player *p, t_map *map, double speed);
-void	rotate(t_player *p, double speed);
+typedef struct s_wall
+{
+	double		dw;
+	double		wall_x;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			tex_x;
+	int			tex_y;
+	double		step;
+	double		tex_pos;
+	uint32_t	color;
+	uint8_t		*texture;
+}				t_wall;
+
+
+int					ft_strcmp(char *s1, char *s2);
+void				*ft_memset(void *s, int c, size_t n);
+void				print_errors_1(int error);
+void				check_errors_1(char *filename);
+void				find_player(t_player *player, t_map *map);
+void				cube(t_map *map);
+void				move_x(t_player *p, t_map *map, double speed);
+void				raycast(t_player *player, t_map *map, t_raycast *ray);
+void				move_y(t_player *p, t_map *map, double speed);
+void				rotate(t_player *p, double speed);
+void				put_pixel(mlx_image_t *img, int x, int y, uint32_t color);
 
 #endif

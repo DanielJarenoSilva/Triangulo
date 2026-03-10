@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 12:55:49 by djareno           #+#    #+#             */
-/*   Updated: 2026/03/09 11:32:03 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/10 12:39:22 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	update(void *param)
 		rotate(&g->player, 0.05);
 	if (mlx_is_key_down(g->mlx, MLX_KEY_LEFT))
 		rotate(&g->player, -0.05);
+	if (mlx_is_key_down(g->mlx, MLX_KEY_ESCAPE))
+		exit(1);
 	raycast(&g->player, &g->map, &g->ray);
 }
 
@@ -41,6 +43,10 @@ void	cube(t_map *map)
 	game.mlx = mlx_init(WIDTH, HEIGHT, "cube3D", false);
 	if (!game.mlx)
 		return ;
+	game.ray.wall_tex[TEX_NORTH] = mlx_load_png("textures/umberto.png");
+	game.ray.wall_tex[TEX_SOUTH] = mlx_load_png("textures/jorker.png");
+	game.ray.wall_tex[TEX_EAST] = mlx_load_png("textures/crujiente.png");
+	game.ray.wall_tex[TEX_WEST] = mlx_load_png("textures/muskface.png");
 	game.ray.img = mlx_new_image(game.mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(game.mlx, game.ray.img, 0, 0);
 

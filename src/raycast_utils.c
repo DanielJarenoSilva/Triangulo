@@ -1,40 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/10 12:36:26 by djareno          ###   ########.fr       */
+/*   Created: 2026/03/10 10:48:42 by djareno           #+#    #+#             */
+/*   Updated: 2026/03/10 12:13:23 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "cub3D.h"
 
-
-char	**create_map(void)
+void	put_pixel(mlx_image_t *img, int x, int y, uint32_t color)
 {
-	char	**map;
+	uint8_t	*pixel;
 
-	map = malloc(6 * sizeof(char *));
-	map[0] = ft_strdup("111111");
-	map[1] = ft_strdup("100001");
-	map[2] = ft_strdup("101101");
-	map[3] = ft_strdup("101001");
-	map[4] = ft_strdup("101N01");
-	map[5] = ft_strdup("111111");
-	return (map);
-}
-
-int	main(void)
-{
-	t_map	map;
-
-	map.map = create_map();
-	map.height = 6;
-	map.width = 6;
-	cube(&map);
-	return (0);
+	pixel = (uint8_t *)&img->pixels[(y * img->width + x) * 4];
+	*(uint32_t *)pixel = color;
 }

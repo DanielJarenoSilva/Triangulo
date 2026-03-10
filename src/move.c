@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 10:49:38 by djareno           #+#    #+#             */
-/*   Updated: 2026/03/09 11:19:53 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/10 12:35:31 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void	move_x(t_player *p, t_map *map, double speed)
 	{
 		p->pos_x -= p->dir_y * speed;
 	}
+	x = (int)(p->pos_x);
+	y = (int)(p->pos_y + p->plane_y * speed);
+	if (y >= 0 && y < map->height && map->map[y][x] != '1')
+		p->pos_y += p->plane_y * speed;
 }
 
 void	rotate(t_player *p, double speed)

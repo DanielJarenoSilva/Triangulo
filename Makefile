@@ -3,7 +3,7 @@ NAME = cub3D
 MLX_DIR = ./MLX42
 MLX_LIB = $(MLX_DIR)/build/libmlx42.a
 
-SRC = $(addprefix src/, main.c map_errors_1.c print_errors.c libft_utils.c find_player.c cube.c  raycast.c move.c)
+SRC = $(addprefix src/, main.c map_errors_1.c print_errors.c libft_utils.c find_player.c cube.c raycast_utils.c raycast.c move.c)
 GNL_SRC = $(addprefix gnl/, get_next_line.c get_next_line_utils.c free_buffer.c)
 
 OBJ := $(SRC:%.c=%.o)
