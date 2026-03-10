@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 12:55:49 by djareno           #+#    #+#             */
-/*   Updated: 2026/03/10 12:39:22 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/10 13:10:35 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ void	cube(t_map *map)
 	game.ray.wall_tex[TEX_WEST] = mlx_load_png("textures/muskface.png");
 	game.ray.img = mlx_new_image(game.mlx, WIDTH, HEIGHT);
 	mlx_image_to_window(game.mlx, game.ray.img, 0, 0);
-
 	mlx_loop_hook(game.mlx, update, &game);
-
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 }

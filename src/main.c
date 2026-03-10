@@ -6,13 +6,12 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/10 12:36:26 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/10 13:10:43 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "cub3D.h"
-
 
 char	**create_map(void)
 {

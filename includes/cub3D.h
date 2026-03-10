@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/10 11:32:11 by djareno          ###   ########.fr       */
+/*   Updated: 2026/03/10 13:07:03 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void				raycast(t_player *player, t_map *map, t_raycast *ray);
 void				move_y(t_player *p, t_map *map, double speed);
 void				rotate(t_player *p, double speed);
 void				put_pixel(mlx_image_t *img, int x, int y, uint32_t color);
+void				draw_wall_aux(t_raycast *r, t_wall *w, int x);
 
 #endif
