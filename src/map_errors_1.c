@@ -6,24 +6,24 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:56:28 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/10 13:28:32 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/12 13:09:25 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "get_next_line.h"
 
-void save_colors
+/*void save_colors(t_global *global)
 {
 	
-}
+}*/
 	
-save_ids(char *line, char *word, t_global *global)
+void save_ids(char *line, char *word, t_global *global)
 {
 	save_paths(line, word, global);
-	else if (ft_strcmp(word, "F") == 0 || ft_strcmp(word, "C") == 0)
-		save_colors();
-	else
+	//if (ft_strcmp(word, "F") == 0 || ft_strcmp(word, "C") == 0)
+	//	save_colors(global);
+	//else
 		//dar error porque el id no es valido
 }
 
@@ -40,7 +40,16 @@ void	check_and_save_identifiers(char *line, int *map_flag, t_global *global)
 		free(word);
 		return ;
 	}
-	save_ids(line, word, global);
+	free(word);
+	word = get_word(line, 3);
+	if (word)
+	{
+		print_errors_1(5);
+		free(word);
+		exit (1);
+	}
+	free(word);
+	save_ids(line, get_word(line, 1), global);
 }
 
 void	check_file(int fd, t_global *global)

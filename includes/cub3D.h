@@ -6,7 +6,7 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/10 13:27:55 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/12 13:06:08 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ int			check_all_ids(t_global *global);
 t_global	*init_struct(void);
 int			has_cub_extension(char *filename);
 void		save_paths(char *line, char *word, t_global *global);
+int			get_lenght(char *line, int n);
 
 #endif
