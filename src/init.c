@@ -6,20 +6,23 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:09:34 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/10 12:56:26 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/17 19:16:29 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_parse(t_parse *parse)
+void	init_parse(t_global *global)
 {
-	parse->NO = 0;
-	parse->SO = 0;
-	parse->WE = 0;
-	parse->EA = 0;
-	parse->F = 0;
-	parse->C = 0;
+	global->parse->NO = 0;
+	global->parse->SO = 0;
+	global->parse->WE = 0;
+	global->parse->EA = 0;
+	global->parse->F = 0;
+	global->parse->C = 0;
+	global->map_width = 0;
+	global->map_height = 0;
+	global->line_map_begin = 0;
 }
 
 void	init_path(t_path *path)
@@ -60,7 +63,7 @@ t_global	*init_struct(void)
 	}
 	global->parse = parse;
 	global->path = path;
-	init_parse(global->parse);
+	init_parse(global);
 	init_path(global->path);
 	return (global);
 }

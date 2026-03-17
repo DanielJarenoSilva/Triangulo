@@ -6,7 +6,7 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 18:51:51 by lvargas-          #+#    #+#             */
-/*   Updated: 2025/09/04 16:36:20 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/17 17:54:50 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 void	free_gnl_buffer(char **buf);
+int     get_color(char *colors, int n);
 
 #endif

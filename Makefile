@@ -1,6 +1,7 @@
 NAME = cub3D
 
-SRC = $(addprefix src/, main.c map_errors_1.c print_errors.c libft_utils.c utils.c parse_utils.c init.c free.c)
+SRC = $(addprefix src/, main.c print_errors.c libft_utils.c utils.c init.c free.c create_matrix.c) \
+      $(addprefix src/parse/, parse_errors_1.c parse_utils_1.c parse_utils_2.c parse_utils_3.c)
 GNL_SRC = $(addprefix gnl/, get_next_line.c get_next_line_utils.c free_buffer.c)
 
 OBJ := $(SRC:%.c=%.o)

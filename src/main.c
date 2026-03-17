@@ -6,12 +6,33 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/17 13:45:48 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/17 21:26:06 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "get_next_line.h"
+
+#include <stdio.h>
+
+void	print_map_debug(t_global *global)
+{
+    int	y;
+
+    if (!global || !global->map)
+    {
+        printf("map: NULL\n");
+        return ;
+    }
+    printf("map_height=%d map_width=%d line_map_begin=%d\n",
+        global->map_height, global->map_width, global->line_map_begin);
+    y = 0;
+    while (global->map[y])
+    {
+        printf("[%02d] \"%s\"\n", y, global->map[y]);
+        y++;
+    }
+}
 
 int	main(int argc, char *argv[])
 {
@@ -26,8 +47,17 @@ int	main(int argc, char *argv[])
 	if (fd < 0)
 		return (close(fd), print_errors_1(2), 1);
 	global = init_struct();
-	if (check_errors_1(file_name, fd, global) == -1)
-		exit (1);
+	if (check_parse_errors(file_name, fd, global) == -1)
+	{
+		free_struct(global);
+		get_next_line(fd, 1);
+		close(fd);
+		return (1);
+	}
+	read_map(file_name, global);
+	print_map_debug(global);
+	get_next_line(fd, 1);
 	close(fd);
+	free_struct(global);
 	return (0);
 }
