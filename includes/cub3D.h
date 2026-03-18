@@ -6,7 +6,7 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/17 21:22:36 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/18 16:18:11 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int			ft_isdigit(int c);
 int			ft_atoi(const char *nptr);
 char		*ft_strncpy(char *dest, const char *src, int n);
 void		print_errors_1(int error);
+void		print_errors_2(int error);
 int			check_parse_errors(char *filename, int fd, t_global *global);
 char		*get_word(char *line, int nb);
 int			check_all_ids(t_global *global);
@@ -60,6 +61,10 @@ void		save_paths(char *line, char *word, t_global *global);
 int			get_lenght(char *line, int n);
 void 		free_struct(t_global *global);
 void 		save_single_color(t_global *global, char *id, int i, int n);
-void		read_map(char *filename, t_global *global);
+void		read_and_save_map(char *filename, t_global *global);
+int 		check_map(t_global *global);
+int 		check_map_line(t_global *global, int *char_flag, int n, int m);
+int 		check_double_id(t_global *global, char *word);
+int 		check_path(char *line);
 
 #endif

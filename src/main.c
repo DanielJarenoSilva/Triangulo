@@ -6,7 +6,7 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/17 21:26:06 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/18 19:34:58 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,15 @@ int	main(int argc, char *argv[])
 		close(fd);
 		return (1);
 	}
-	read_map(file_name, global);
-	print_map_debug(global);
+	get_next_line(fd, 1);
+	read_and_save_map(file_name, global);
+	if (check_map(global) == -1)
+	{
+		free_struct(global);
+		get_next_line(fd, 1);
+		close(fd);
+		return (1);
+	}
 	get_next_line(fd, 1);
 	close(fd);
 	free_struct(global);

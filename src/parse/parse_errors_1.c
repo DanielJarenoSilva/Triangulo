@@ -6,7 +6,7 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:56:28 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/17 19:19:01 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/18 16:17:40 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,15 @@ int save_colors(t_global *global, char *line)
 	}
 	return (free(identifier), free(rgb), 0);
 }
-	
+
 int save_ids(char *line, char *word, t_global *global)
 {
 	if (ft_strcmp(word, "NO") == 0 || ft_strcmp(word, "SO") == 0 || ft_strcmp(word, "WE") == 0 || ft_strcmp(word, "EA") == 0)
 	{
+		if (check_double_id(global, word) == -1)
+			return (-1);
+		if (check_path(line) == -1)
+			return (-1);
 		save_paths(line, word, global);
 	}
 	else if (ft_strcmp(word, "F") == 0 || ft_strcmp(word, "C") == 0)

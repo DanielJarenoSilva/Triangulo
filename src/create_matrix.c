@@ -6,7 +6,7 @@
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 18:45:22 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/17 21:23:20 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/18 15:51:50 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,27 @@ void advance_until_map(t_global *global, int fd)
     int n;
     char *line;
 
-    n = 0;
-    while (n < (global->line_map_begin - 1))
+    n = 1;
+    while (n < global->line_map_begin)
     {
         line = get_next_line(fd, 0);
         (void)line;
+		free(line);
         n++;
     }
 }
-
-void	read_map(char *filename, t_global *global)
+void	read_and_save_map(char *filename, t_global *global)
 {
 	int		fd;
 
 	fd = open(filename, O_RDONLY);
     advance_until_map(global, fd);
     get_width_and_height(fd, global);
+	get_next_line(fd, 1);
     close(fd);
     fd = open(filename, O_RDONLY);
     advance_until_map(global, fd);
 	global->map = fill_matrix(fd, global->map_width, global->map_height);
+	get_next_line(fd, 1);
 	close(fd);
 }
