@@ -4,7 +4,6 @@ SO ./textures/crujiente.png
 EA ./textures/muskface.png
 F 255,100,0
 WE     ./textures/umberto.png
-F 255,100,0
 
 111111
 100001111
