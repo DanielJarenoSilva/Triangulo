@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 18:45:22 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/18 15:51:50 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:53:42 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ void	get_width_and_height(int fd, t_global *global)
 	line = get_next_line(fd, 0);
 	while (line)
 	{	
-		(global->map_height)++;
+		(global->map->height)++;
         tmp = line;
 		while (*line && *line != '\n')
 		{
 			width++;
 			line++;
 		}
-        if (width > global->map_width)
-            global->map_width = width;
+        if (width > global->map->width)
+            global->map->width = width;
         width = 0;
         line = get_next_line(fd, 0);
 		free(tmp);
@@ -92,7 +92,7 @@ void	read_and_save_map(char *filename, t_global *global)
     close(fd);
     fd = open(filename, O_RDONLY);
     advance_until_map(global, fd);
-	global->map = fill_matrix(fd, global->map_width, global->map_height);
+	global->map->map = fill_matrix(fd, global->map->width, global->map->height);
 	get_next_line(fd, 1);
 	close(fd);
 }

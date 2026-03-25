@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:56:28 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/18 16:17:40 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:55:05 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int save_ids(char *line, char *word, t_global *global)
 	}
 	else if (ft_strcmp(word, "F") == 0 || ft_strcmp(word, "C") == 0)
 	{
+		if (ft_strcmp(word, "C") == 0 && global->parse->C == 1)
+			return (print_errors_2(1), -1);
+		else if (ft_strcmp(word, "F") == 0 && global->parse->F == 1)
+			return (print_errors_2(1), -1);
 		if (save_colors(global, line) == -1)
 			return (-1);
 	}

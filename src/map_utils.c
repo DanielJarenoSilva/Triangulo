@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 14:58:38 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/18 15:07:36 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:53:42 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int check_map_line(t_global *global, int *char_flag, int n, int m)
 {
-    if (global->map[n][m] != '0' && global->map[n][m] != '1' && global->map[n][m] != ' ')
+    if (global->map->map[n][m] != '0' && global->map->map[n][m] != '1' && global->map->map[n][m] != ' ')
     {
-        if (global->map[n][m] == 'N' || global->map[n][m] == 'S' || global->map[n][m] == 'E' || global->map[n][m] == 'W')
+        if (global->map->map[n][m] == 'N' || global->map->map[n][m] == 'S' || global->map->map[n][m] == 'E' || global->map->map[n][m] == 'W')
         {
             if (!*char_flag)
                 *char_flag = 1;

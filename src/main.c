@@ -3,36 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/18 19:34:58 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:16:24 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "get_next_line.h"
-
-#include <stdio.h>
-
-void	print_map_debug(t_global *global)
-{
-    int	y;
-
-    if (!global || !global->map)
-    {
-        printf("map: NULL\n");
-        return ;
-    }
-    printf("map_height=%d map_width=%d line_map_begin=%d\n",
-        global->map_height, global->map_width, global->line_map_begin);
-    y = 0;
-    while (global->map[y])
-    {
-        printf("[%02d] \"%s\"\n", y, global->map[y]);
-        y++;
-    }
-}
 
 int	main(int argc, char *argv[])
 {
@@ -65,6 +44,7 @@ int	main(int argc, char *argv[])
 	}
 	get_next_line(fd, 1);
 	close(fd);
+	cube(global);
 	free_struct(global);
 	return (0);
 }

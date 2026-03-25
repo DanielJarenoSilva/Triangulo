@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:09:34 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/17 19:16:29 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:52:02 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	init_parse(t_global *global)
 	global->parse->EA = 0;
 	global->parse->F = 0;
 	global->parse->C = 0;
-	global->map_width = 0;
-	global->map_height = 0;
+	global->map->width = 0;
+	global->map->height = 0;
 	global->line_map_begin = 0;
 }
 
@@ -44,6 +44,7 @@ t_global	*init_struct(void)
 	t_global	*global;
 	t_parse		*parse;
 	t_path		*path;
+	t_map		*map;
 
 	global = malloc(sizeof(*global));
 	if (!global)
@@ -61,6 +62,15 @@ t_global	*init_struct(void)
 		free(global);
 		return (NULL);
 	}
+	map = malloc(sizeof(*map));
+	if (!map)
+	{
+		free(path);
+		free(parse);
+		free(global);
+		return (NULL);
+	}
+	global->map = map;
 	global->parse = parse;
 	global->path = path;
 	init_parse(global);

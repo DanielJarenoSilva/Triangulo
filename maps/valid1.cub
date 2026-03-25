@@ -1,9 +1,10 @@
 C 225,30,0
-NO ./textures/north.xpm
-SO ./textures/south.xpm
-EA ./textures/east.xpm
+NO ./textures/jorker.png
+SO ./textures/crujiente.png
+EA ./textures/muskface.png
 F 255,100,0
-WE     ./textures/west.xpm
+WE     ./textures/umberto.png
+F 255,100,0
 
 111111
 100001111

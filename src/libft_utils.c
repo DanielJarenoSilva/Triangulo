@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 13:25:10 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/17 21:33:21 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:40:14 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,19 @@ char	*ft_strncpy(char *dest, const char *src, int n)
     }
     dest[i] = '\0';
     return (dest);
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	x;
+	char	*str;
+
+	str = s;
+	x = 0;
+	while (x < n)
+	{
+		str[x] = (unsigned char)c;
+		x++;
+	}
+	return (s);
 }

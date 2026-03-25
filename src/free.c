@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 13:40:58 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/18 19:34:18 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/03/25 12:53:42 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void free_struct(t_global *global)
 {
     if (!global)
         return ;
-    if (global->map)
-        free_map(global->map);
+    if (global->map->map)
+        free_map(global->map->map);
     if (global->path)
     {
         free(global->path->NO);
