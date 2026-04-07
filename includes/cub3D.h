@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:57:35 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/25 13:13:40 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 10:43:32 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define CUB3D_H
 
 # include <stddef.h>
-# include <MLX42/MLX42.h>
+# include "MLX42/MLX42.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -29,6 +29,16 @@
 # define TEX_SOUTH 1
 # define TEX_EAST  2
 # define TEX_WEST  3
+
+typedef struct s_path
+{
+	char	*NO;
+	char	*SO;
+	char	*WE;
+	char	*EA;
+	int		F[3];
+	int		C[3];
+}			t_path;
 
 typedef struct t_player
 {
@@ -55,8 +65,9 @@ typedef struct t_raycast
 	int				step_y;
 	int				hit;
 	int				side;
-	mlx_image_t*	img;
+	mlx_image_t		*img;
 	mlx_texture_t	*wall_tex[4];
+	t_path			*path;
 }				t_raycast;
 
 typedef struct s_wall
@@ -91,16 +102,6 @@ typedef struct s_parse
 	int		C;
 }			t_parse;
 
-typedef struct s_path
-{
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	int		F[3];
-	int		C[3];
-}			t_path;
-
 typedef struct s_global
 {
 	t_parse		*parse;
@@ -126,13 +127,13 @@ t_global	*init_struct(void);
 int			has_cub_extension(char *filename);
 void		save_paths(char *line, char *word, t_global *global);
 int			get_lenght(char *line, int n);
-void 		free_struct(t_global *global);
-void 		save_single_color(t_global *global, char *id, int i, int n);
+void		free_struct(t_global *global);
+void		save_single_color(t_global *global, char *id, int i, int n);
 void		read_and_save_map(char *filename, t_global *global);
-int 		check_map(t_global *global);
-int 		check_map_line(t_global *global, int *char_flag, int n, int m);
-int 		check_double_id(t_global *global, char *word);
-int 		check_path(char *line);
+int			check_map(t_global *global);
+int			check_map_line(t_global *global, int *char_flag, int n, int m);
+int			check_double_id(t_global *global, char *word);
+int			check_path(char *line);
 void		find_player(t_player *player, t_map *map);
 void		cube(t_global *game);
 void		move_x(t_player *p, t_map *map, double speed);

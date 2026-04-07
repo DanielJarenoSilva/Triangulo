@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/25 13:16:24 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 10:36:02 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char *argv[])
 	}
 	get_next_line(fd, 1);
 	close(fd);
+	global->ray.path = global->path;
 	cube(global);
 	free_struct(global);
 	return (0);

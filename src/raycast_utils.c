@@ -6,7 +6,7 @@
 /*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 10:48:42 by djareno           #+#    #+#             */
-/*   Updated: 2026/03/10 13:11:02 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 11:20:18 by djareno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,46 @@ void	put_pixel(mlx_image_t *img, int x, int y, uint32_t color)
 	*(uint32_t *)pixel = color;
 }
 
+void	put_floor(t_wall *w, t_raycast *r, int x)
+{
+	int	y;
+	int	color;
+
+	color = (0xFF << 24)
+		| (r->path->F[2] << 16)
+		| (r->path->F[1] << 8)
+		| r->path->F[0];
+	y = w->draw_end;
+	while (y < HEIGHT)
+	{
+		put_pixel(r->img, x, y, color);
+		y++;
+	}
+}
+
+void	put_ceiling(t_wall *w, t_raycast *r, int x)
+{
+	int	y;
+	int	color;
+
+	color = (0xFF << 24)
+		| (r->path->C[2] << 16)
+		| (r->path->C[1] << 8)
+		| r->path->C[0];
+	y = 0;
+	while (y < w->draw_start)
+	{
+		put_pixel(r->img, x, y, color);
+		y++;
+	}
+}
+
 void	draw(int x, t_raycast *r, t_wall *w)
 {
 	int	y;
 
-	y = 0;
-	while (y < w->draw_start)
-	{
-		put_pixel(r->img, x, y, 0xFFDFFF00);
-		y++;
-	}
+	put_ceiling(w, r, x);
+	y = w->draw_start;
 	while (y < w->draw_end)
 	{
 		w->tex_y = (int)w->tex_pos & (TEX_HEIGHT - 1);
@@ -39,11 +69,7 @@ void	draw(int x, t_raycast *r, t_wall *w)
 		put_pixel(r->img, x, y, w->color);
 		y++;
 	}
-	while (y < HEIGHT)
-	{
-		put_pixel(r->img, x, y, 0x444444FF);
-		y++;
-	}
+	put_floor(w, r, x);
 }
 
 void	draw_wall_aux(t_raycast *r, t_wall *w, int x)
