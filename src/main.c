@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:54:26 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/04/07 10:36:02 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 19:32:19 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,8 @@ int	main(int argc, char *argv[])
 	if (fd < 0)
 		return (close(fd), print_errors_1(2), 1);
 	global = init_struct();
-	if (check_parse_errors(file_name, fd, global) == -1)
-	{
-		free_struct(global);
-		get_next_line(fd, 1);
-		close(fd);
+	if (check_errors_and_save_map(global, fd, file_name) == 1)
 		return (1);
-	}
-	get_next_line(fd, 1);
-	read_and_save_map(file_name, global);
-	if (check_map(global) == -1)
-	{
-		free_struct(global);
-		get_next_line(fd, 1);
-		close(fd);
-		return (1);
-	}
-	get_next_line(fd, 1);
-	close(fd);
 	global->ray.path = global->path;
 	cube(global);
 	free_struct(global);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 20:09:34 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/25 12:52:02 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 20:00:15 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,45 @@
 
 void	init_parse(t_global *global)
 {
-	global->parse->NO = 0;
-	global->parse->SO = 0;
-	global->parse->WE = 0;
-	global->parse->EA = 0;
-	global->parse->F = 0;
-	global->parse->C = 0;
+	global->parse->no = 0;
+	global->parse->so = 0;
+	global->parse->we = 0;
+	global->parse->ea = 0;
+	global->parse->f = 0;
+	global->parse->c = 0;
 	global->map->width = 0;
 	global->map->height = 0;
+	global->map->map = NULL;
 	global->line_map_begin = 0;
 }
 
 void	init_path(t_path *path)
 {
-	path->NO = NULL;
-	path->SO = NULL;
-	path->WE = NULL;
-	path->EA = NULL;
-	path->F[0] = -1;
-	path->F[1] = -1;
-	path->F[2] = -1;
-	path->C[0] = -1;
-	path->C[1] = -1;
-	path->C[2] = -1;
+	path->no = NULL;
+	path->so = NULL;
+	path->we = NULL;
+	path->ea = NULL;
+	path->f[0] = -1;
+	path->f[1] = -1;
+	path->f[2] = -1;
+	path->c[0] = -1;
+	path->c[1] = -1;
+	path->c[2] = -1;
+}
+
+int	init_struct_1(t_global *global, t_parse *parse, t_path *path)
+{
+	t_map	*map;
+
+	map = malloc(sizeof(*map));
+	if (!map)
+		return (1);
+	global->map = map;
+	global->parse = parse;
+	global->path = path;
+	init_parse(global);
+	init_path(global->path);
+	return (0);
 }
 
 t_global	*init_struct(void)
@@ -44,7 +60,6 @@ t_global	*init_struct(void)
 	t_global	*global;
 	t_parse		*parse;
 	t_path		*path;
-	t_map		*map;
 
 	global = malloc(sizeof(*global));
 	if (!global)
@@ -62,18 +77,7 @@ t_global	*init_struct(void)
 		free(global);
 		return (NULL);
 	}
-	map = malloc(sizeof(*map));
-	if (!map)
-	{
-		free(path);
-		free(parse);
-		free(global);
-		return (NULL);
-	}
-	global->map = map;
-	global->parse = parse;
-	global->path = path;
-	init_parse(global);
-	init_path(global->path);
+	if (init_struct_1(global, parse, path) == 1)
+		return (free(path), free(parse), free(global), NULL);
 	return (global);
 }

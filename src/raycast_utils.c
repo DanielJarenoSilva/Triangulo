@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 10:48:42 by djareno           #+#    #+#             */
-/*   Updated: 2026/04/07 11:20:18 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 20:01:39 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	put_floor(t_wall *w, t_raycast *r, int x)
 	int	color;
 
 	color = (0xFF << 24)
-		| (r->path->F[2] << 16)
-		| (r->path->F[1] << 8)
-		| r->path->F[0];
+		| (r->path->f[2] << 16)
+		| (r->path->f[1] << 8)
+		| r->path->f[0];
 	y = w->draw_end;
 	while (y < HEIGHT)
 	{
@@ -43,9 +43,9 @@ void	put_ceiling(t_wall *w, t_raycast *r, int x)
 	int	color;
 
 	color = (0xFF << 24)
-		| (r->path->C[2] << 16)
-		| (r->path->C[1] << 8)
-		| r->path->C[0];
+		| (r->path->c[2] << 16)
+		| (r->path->c[1] << 8)
+		| r->path->c[0];
 	y = 0;
 	while (y < w->draw_start)
 	{

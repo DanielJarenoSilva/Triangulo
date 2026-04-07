@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   parse_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 12:53:52 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/12 13:31:38 by lvargas-         ###   ########.fr       */
+/*   Updated: 2026/04/07 19:51:56 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "get_next_line.h"
 
-int advance_word(char *line, int n)
+int	advance_word(char *line, int n)
 {
 	while (line[n] != '\0' && line[n] != ' ')
 		n++;
@@ -22,27 +22,27 @@ int advance_word(char *line, int n)
 	return (n);
 }
 
-char *return_word(char *line, int n)
+char	*return_word(char *line, int n)
 {
-    int i;
-    char *word;
-    
-    i = 0;
-    if (line[n] != '\0' && line[n] != ' ' && line[n] != '\n')
-    {
-        word = (char *)malloc((get_lenght(line, n) * sizeof(char)) + 1);
-        while (line[n] != '\0' && line[n] != ' ' && line[n] != '\n')
-        {
-            word[i] = line[n];
-            i++;
-            n++;
-        }
-        word[i] = '\0';
-    }
-    else
-    {
-        word = NULL;
-    }
+	int		i;
+	char	*word;
+
+	i = 0;
+	if (line[n] != '\0' && line[n] != ' ' && line[n] != '\n')
+	{
+		word = (char *)malloc((get_lenght(line, n) * sizeof(char)) + 1);
+		while (line[n] != '\0' && line[n] != ' ' && line[n] != '\n')
+		{
+			word[i] = line[n];
+			i++;
+			n++;
+		}
+		word[i] = '\0';
+	}
+	else
+	{
+		word = NULL;
+	}
 	return (word);
 }
 
@@ -70,17 +70,17 @@ int	check_all_ids(t_global *global)
 	int	n;
 
 	n = 0;
-	if (global->parse->NO == 1)
+	if (global->parse->no == 1)
 		n++;
-	if (global->parse->SO == 1)
+	if (global->parse->so == 1)
 		n++;
-	if (global->parse->WE == 1)
+	if (global->parse->we == 1)
 		n++;
-	if (global->parse->EA == 1)
+	if (global->parse->ea == 1)
 		n++;
-	if (global->parse->F == 1)
+	if (global->parse->f == 1)
 		n++;
-	if (global->parse->C == 1)
+	if (global->parse->c == 1)
 		n++;
 	if (n == 6)
 		return (1);
@@ -95,28 +95,4 @@ int	has_cub_extension(char *filename)
 	if (len < 4)
 		return (0);
 	return (ft_strcmp(filename + len - 4, ".cub") == 0);
-}
-
-void save_paths(char *line, char *word, t_global *global)
-{
-	if (ft_strcmp(word, "NO") == 0)
-	{
-		global->parse->NO = 1;
-		global->path->NO = get_word(line, 2);
-	}
-	else if (ft_strcmp(word, "SO") == 0)
-	{
-		global->parse->SO = 1;
-		global->path->SO = get_word(line, 2);
-	}
-	else if (ft_strcmp(word, "WE") == 0)
-	{
-		global->parse->WE = 1;
-		global->path->WE = get_word(line, 2);
-	}
-	else if (ft_strcmp(word, "EA") == 0)
-	{
-		global->parse->EA = 1;
-		global->path->EA = get_word(line, 2);
-	}
 }

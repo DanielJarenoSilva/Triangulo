@@ -12,19 +12,21 @@
 
 #include "cub3D.h"
 
-int check_map_line(t_global *global, int *char_flag, int n, int m)
+int	check_map_line(t_global *global, int *char_flag, int n, int m)
 {
-    if (global->map->map[n][m] != '0' && global->map->map[n][m] != '1' && global->map->map[n][m] != ' ')
-    {
-        if (global->map->map[n][m] == 'N' || global->map->map[n][m] == 'S' || global->map->map[n][m] == 'E' || global->map->map[n][m] == 'W')
-        {
-            if (!*char_flag)
-                *char_flag = 1;
-            else
-                return (print_errors_1(9), 0);
-        }
-        else
-            return (print_errors_1(10), 0);
-    }
-    return (1);
+	if (global->map->map[n][m] != '0' && global->map->map[n][m] != '1'
+		&& global->map->map[n][m] != ' ')
+	{
+		if (global->map->map[n][m] == 'N' || global->map->map[n][m] == 'S'
+			|| global->map->map[n][m] == 'E' || global->map->map[n][m] == 'W')
+		{
+			if (!*char_flag)
+				*char_flag = 1;
+			else
+				return (print_errors_1(9), 0);
+		}
+		else
+			return (print_errors_1(10), 0);
+	}
+	return (1);
 }

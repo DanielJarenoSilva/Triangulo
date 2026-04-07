@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 18:45:22 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/25 12:53:42 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 19:54:35 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ void	get_width_and_height(int fd, t_global *global)
 {
 	char	*line;
 	char	*tmp;
-    int width;
+	int		width;
 
-    width = 0;
+	width = 0;
 	line = get_next_line(fd, 0);
 	while (line)
-	{	
+	{
 		(global->map->height)++;
-        tmp = line;
+		tmp = line;
 		while (*line && *line != '\n')
 		{
 			width++;
 			line++;
 		}
-        if (width > global->map->width)
-            global->map->width = width;
-        width = 0;
-        line = get_next_line(fd, 0);
+		if (width > global->map->width)
+			global->map->width = width;
+		width = 0;
+		line = get_next_line(fd, 0);
 		free(tmp);
 	}
 	free(line);
@@ -63,35 +63,36 @@ char	**fill_matrix(int fd, int width, int height)
 		y++;
 	}
 	while (y <= height)
-        map[y++] = NULL;
+		map[y++] = NULL;
 	return (map);
 }
 
-void advance_until_map(t_global *global, int fd)
+void	advance_until_map(t_global *global, int fd)
 {
-    int n;
-    char *line;
+	int		n;
+	char	*line;
 
-    n = 1;
-    while (n < global->line_map_begin)
-    {
-        line = get_next_line(fd, 0);
-        (void)line;
+	n = 1;
+	while (n < global->line_map_begin)
+	{
+		line = get_next_line(fd, 0);
+		(void)line;
 		free(line);
-        n++;
-    }
+		n++;
+	}
 }
+
 void	read_and_save_map(char *filename, t_global *global)
 {
-	int		fd;
+	int	fd;
 
 	fd = open(filename, O_RDONLY);
-    advance_until_map(global, fd);
-    get_width_and_height(fd, global);
+	advance_until_map(global, fd);
+	get_width_and_height(fd, global);
 	get_next_line(fd, 1);
-    close(fd);
-    fd = open(filename, O_RDONLY);
-    advance_until_map(global, fd);
+	close(fd);
+	fd = open(filename, O_RDONLY);
+	advance_until_map(global, fd);
 	global->map->map = fill_matrix(fd, global->map->width, global->map->height);
 	get_next_line(fd, 1);
 	close(fd);

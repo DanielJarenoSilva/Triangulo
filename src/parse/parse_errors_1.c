@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parse_errors_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 12:56:28 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/25 13:55:05 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 19:49:19 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include "get_next_line.h"
 
-int save_colors(t_global *global, char *line)
+int	save_colors(t_global *global, char *line)
 {
-	int n;
-	int i;
-	char *identifier;
-	char *rgb;
+	int		n;
+	int		i;
+	char	*identifier;
+	char	*rgb;
 
 	identifier = get_word(line, 1);
 	rgb = get_word(line, 2);
@@ -34,9 +34,10 @@ int save_colors(t_global *global, char *line)
 	return (free(identifier), free(rgb), 0);
 }
 
-int save_ids(char *line, char *word, t_global *global)
+int	save_ids(char *line, char *word, t_global *global)
 {
-	if (ft_strcmp(word, "NO") == 0 || ft_strcmp(word, "SO") == 0 || ft_strcmp(word, "WE") == 0 || ft_strcmp(word, "EA") == 0)
+	if (ft_strcmp(word, "NO") == 0 || ft_strcmp(word, "SO") == 0
+		|| ft_strcmp(word, "WE") == 0 || ft_strcmp(word, "EA") == 0)
 	{
 		if (check_double_id(global, word) == -1)
 			return (-1);
@@ -46,9 +47,9 @@ int save_ids(char *line, char *word, t_global *global)
 	}
 	else if (ft_strcmp(word, "F") == 0 || ft_strcmp(word, "C") == 0)
 	{
-		if (ft_strcmp(word, "C") == 0 && global->parse->C == 1)
+		if (ft_strcmp(word, "C") == 0 && global->parse->c == 1)
 			return (print_errors_2(1), -1);
-		else if (ft_strcmp(word, "F") == 0 && global->parse->F == 1)
+		else if (ft_strcmp(word, "F") == 0 && global->parse->f == 1)
 			return (print_errors_2(1), -1);
 		if (save_colors(global, line) == -1)
 			return (-1);

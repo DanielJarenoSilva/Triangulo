@@ -59,21 +59,21 @@ int	ft_atoi(const char *nptr)
 
 char	*ft_strncpy(char *dest, const char *src, int n)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    while (i < n && src[i] && src[i] != '\n')
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    while (i < n)
-    {
-        dest[i] = ' ';
-        i++;
-    }
-    dest[i] = '\0';
-    return (dest);
+	i = 0;
+	while (i < n && src[i] && src[i] != '\n')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = ' ';
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 
 void	*ft_memset(void *s, int c, size_t n)

@@ -12,11 +12,11 @@
 
 #include "cub3D.h"
 
-int check_color_format(char *colors)
+int	check_color_format(char *colors)
 {
-	int i;
-	int coma_count;
-	int color_count;
+	int	i;
+	int	coma_count;
+	int	color_count;
 
 	coma_count = 0;
 	color_count = 0;
@@ -25,7 +25,8 @@ int check_color_format(char *colors)
 	{
 		if (!ft_isdigit(colors[i]) && colors[i] != ',')
 			return (print_errors_1(5), -1);
-		if ((ft_isdigit(colors[i]) && i == 0) || (ft_isdigit(colors[i]) && !ft_isdigit(colors[i - 1])))
+		if ((ft_isdigit(colors[i]) && i == 0) || (ft_isdigit(colors[i])
+				&& !ft_isdigit(colors[i - 1])))
 			color_count++;
 		if (colors[i] == ',')
 			coma_count++;
@@ -36,31 +37,31 @@ int check_color_format(char *colors)
 	return (0);
 }
 
-int get_nb_len(char *colors, int i)
+int	get_nb_len(char *colors, int i)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (colors[i] != '\0' && colors[i] != ',')
 	{
 		len++;
-		i++;	
+		i++;
 	}
 	return (len);
 }
 
-int check_color_range(int n)
+int	check_color_range(int n)
 {
 	if (n < 0 || n > 255)
 		return (print_errors_1(6), -1);
 	return (0);
 }
 
-char *fill_color(char *colors, int i)
+char	*fill_color(char *colors, int i)
 {
-	char *nb;
-	int j;
-	
+	char	*nb;
+	int		j;
+
 	nb = (char *)malloc((get_nb_len(colors, i) + 1) * sizeof(char));
 	j = 0;
 	while (colors[i] != '\0' && colors[i] != ',')
@@ -73,12 +74,12 @@ char *fill_color(char *colors, int i)
 	return (nb);
 }
 
-int get_color(char *colors, int n)
+int	get_color(char *colors, int n)
 {
-	int i;
-	char *nb;
-	int number;
-	
+	int		i;
+	char	*nb;
+	int		number;
+
 	if (check_color_format(colors) == -1)
 		return (-1);
 	i = 0;

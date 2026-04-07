@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   print_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djareno <djareno@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: lvargas- <lvargas-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 14:08:39 by lvargas-          #+#    #+#             */
-/*   Updated: 2026/03/25 13:54:35 by djareno          ###   ########.fr       */
+/*   Updated: 2026/04/07 19:54:01 by lvargas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "cub3D.h"
+#include "get_next_line.h"
 
 void	print_errors_1(int error)
 {
@@ -19,7 +19,7 @@ void	print_errors_1(int error)
 
 	error_msg = "\0";
 	if (error == 1)
-		error_msg = "Error\nDebes introducir como único argumento el nombre del mapa.\n";
+		error_msg = "Error\nDebes introducir un único argumento.\n";
 	else if (error == 2)
 		error_msg = "Error\nArchivo no encontrado.\n";
 	else if (error == 3)

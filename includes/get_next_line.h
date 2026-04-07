@@ -28,6 +28,6 @@ char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 void	free_gnl_buffer(char **buf);
-int     get_color(char *colors, int n);
+int		get_color(char *colors, int n);
 
 #endif
