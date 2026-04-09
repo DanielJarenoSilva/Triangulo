@@ -21,6 +21,7 @@ Key features include:
 
 #### 1. Clone the repository
 git clone https://github.com/your-username/cub3d.git
+
 cd cub3d
 
 ---
@@ -31,19 +32,6 @@ This project uses the MLX42 graphics library.
 You need to clone it into the root of the project:
 
 git clone https://github.com/codam-coding-college/MLX42.git
-
----
-
-#### 3. Install dependencies
-
-On Linux (Debian/Ubuntu-based):
-
-sudo apt update
-sudo apt install build-essential libglfw3-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libxcursor-dev
-
-On macOS (using Homebrew):
-
-brew install glfw
 
 ---
 
